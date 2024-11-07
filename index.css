@@ -1,7 +1,7 @@
 :root {
-  --black: rgb(22, 22, 22);
-  --white: rgb(255, 255, 255);
-  --grey-50: rgb(250, 250, 250);
+  --black: rgb(0, 0, 0);
+  --white: rgb(226, 226, 226);
+  --grey-50: rgb(56, 46, 68);
   --grey-300: rgb(192, 198, 201);
   --grey-500: rgb(88, 104, 112);
   --brand-light: rgb(255, 90, 58);
