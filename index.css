@@ -87,3 +87,8 @@ button {
   box-shadow: var(--box-shadow-lg);
   transition: all 0.3s ease;
 }
+@media screen and (max-width: 640px) {
+  .form-section.form-scale {
+    display: none;
+  }
+}
