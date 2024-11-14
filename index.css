@@ -1,75 +1,142 @@
 :root {
-  --black: rgb(0, 0, 0);
-  --white: rgb(226, 226, 226);
-  --grey-50: rgb(56, 46, 68);
-  --grey-300: rgb(192, 198, 201);
-  --grey-500: rgb(88, 104, 112);
-  --brand-light: rgb(255, 90, 58);
-  --brand-dark: rgb(172, 62, 41);
-  --sky-500: rgb(14 165 233);
-  --box-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --black: rgb(230, 230, 230); /* Light gray for text */
+
+  --white: rgb(30, 30, 30); /* Dark background */
+
+  --grey-50: rgb(45, 45, 45); /* Very dark gray */
+
+  --grey-300: rgb(85, 85, 85); /* Mid-dark gray */
+
+  --grey-500: rgb(140, 140, 140); /* Lighter gray */
+
+  --brand-light: rgb(95, 144, 240); /* Cool light blue */
+
+  --brand-dark: rgb(45, 100, 200); /* Cool darker blue */
+
+  --sky-500: rgb(70, 130, 180); /* Steel blue */
+
+  --box-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3),
+
+                   0 4px 6px -4px rgb(0 0 0 / 0.3);
+
 }
+
 * {
-  color: var(--grey-500);
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
-button {
-  cursor: pointer;
-}
-.form-wrapper {
-  display: flex;
-  background-color: var(--grey-50);
-  min-height: 100vh;
-}
-.form-section {
-  width: calc(50% - 1px);
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 2rem 4rem;
-}
-.form-section:first-of-type {
-  border-right: 1px solid var(--grey-300);
-}
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-start;
-  width: 100%;
-}
-.form-label {
-  font-size: 1.25rem;
-}
-.form-input {
-  background-color: var(--white);
-  border-radius: 999px;
-  border: 1px solid var(--grey-300);
-  font-size: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  font-weight: 300;
+
   color: var(--black);
+
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  margin: 0;
+
+}
+
+button {
+
+  cursor: pointer;
+
+}
+
+.form-wrapper {
+
+  display: flex;
+
+  background-color: var(--white); /* Dark background */
+
+  min-height: 100vh;
+
+}
+
+.form-section {
+
+  width: calc(50% - 1px);
+
+  display: flex;
+
+  flex-grow: 1;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  gap: 2rem;
+
+  padding: 2rem 4rem;
+
+}
+
+.form-section:first-of-type {
+
+  border-right: 1px solid var(--grey-300);
+
+}
+
+.form-field {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+
+  align-items: flex-start;
+
   width: 100%;
+
 }
+
+.form-label {
+
+  font-size: 1.25rem;
+
+}
+
+.form-input {
+
+  background-color: var(--grey-50); /* Dark input background */
+
+  border-radius: 999px;
+
+  border: 1px solid var(--grey-300);
+
+  font-size: 1.5rem;
+
+  padding: 0.75rem 1.5rem;
+
+  font-weight: 300;
+
+  color: var(--black); /* Light text for dark background */
+
+  width: 100%;
+
+}
+
 .form-input::placeholder {
-  color: var(--grey-300);
+
+  color: var(--grey-500); /* Lighter gray for placeholders */
+
 }
+
 .form-input:focus {
+
   outline: none;
-  outline: 2px solid var(--sky-500);
+
+  outline: 2px solid var(--sky-500); /* Steel blue outline */
+
   box-shadow: var(--box-shadow-lg);
+
 }
+
 .submit-btn {
   border-radius: 1.75rem;
   margin: 0 auto;
   text-align: center;
-  color: var(--white);
+  color: var(--white); /* Dark background for button */
   border: 0;
   padding: 0.75rem 2rem;
   font-size: 1.5rem;
@@ -82,13 +149,65 @@ button {
   outline: none;
   box-shadow: none;
 }
+
 .submit-btn:hover {
   outline: 1px solid var(--brand-dark);
   box-shadow: var(--box-shadow-lg);
   transition: all 0.3s ease;
 }
+
+/* Error styling for error labels */
+
+.error-label {
+  color: var(--brand-light);
+}
+.error-message ul {
+  padding-left: 0;
+}
+
+.error-message ul li {
+  color: var(--brand-light);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.1px;
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+
+/* Default: hide the top image for larger screens */
+
+.mobile-display {
+  display: none;
+}
+
+/* Show the top image and hide the side image on smaller screens */
+
 @media screen and (max-width: 640px) {
-  .form-section.form-scale {
+  .mobile-hidden {
     display: none;
   }
-}
+
+  .mobile-display {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .form-wrapper {
+    flex-direction: column; /* Stack form sections vertically on mobile */
+  }
+
+  .form-section {
+    width: calc(50% - 1px); /* Full width on mobile */
+    padding: 2rem 4rem; /* Adjust padding for smaller screens */
+  }
+
+} @media screen and (max-width: 640px) {
+  .mobile-hidden {
+    display: none;
+  }
+
+  .mobile-display {
+    display: block;
+  }
+} 

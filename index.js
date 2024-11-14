@@ -1,71 +1,72 @@
-// Capture user's input on form submission
 let form = document.querySelector("form");
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission
 
-  // Store the user's email address as userEmail (string/text)
-  let userEmail = document.querySelector("#email").value;
-  // Store the user's level as userLevel (string/text)
-  let userLevel = document.querySelector("#level").value;
-  // Store the user's hours of study as userHours (number)
-  let userHours = document.querySelector("#hoursPerWeek").value;
+    // Capture user inputs
+    let userEmail = document.querySelector("#email").value;
+    let userLevel = document.querySelector("#level").value;
+    let userHours = document.querySelector("#hoursPerWeek").value;
 
-  // Validate the user's input
-  // Check if the user has provided an email address
-  if (userEmail === "") {
-    alert("Please enter your email address.");
+    // Clear previous error messages
+    clearErrorMessages();
+    let hasError = false;
 
-    return;
-  }
+    // Presence check and validation for email
+    if (userEmail.trim() === "") {
+        showError("email", "Please enter your email address.");
+        hasError = true;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
+        showError("email", "Please enter a valid email address.");
+        hasError = true;
+    }
 
-  // Check if the user has selected a level
-  // Check if the number of hours requested is within the allowed range
-  if (userLevel === "") {
-    alert("Please enter your Level.");
+    // Presence check for level
+    if (userLevel.trim() === "") {
+        showError("level", "Please select your level.");
+        hasError = true;
+    }
 
-    return;
-  }
+    // Presence check and validation for hours
+    userHours = parseInt(userHours);
+    if (isNaN(userHours) || userHours <= 0) {
+        showError("hoursPerWeek", "Please enter a valid number of hours greater than zero.");
+        hasError = true;
+    } else {
 
+        // Maximum hours based on level
+        const maxHoursPerLevel = {
+            "Basic": 5,
+            "Advanced": 10
+        };
 
-  console.log({ userEmail, userLevel, userHours });
+        if (userHours > maxHoursPerLevel[userLevel]) {
+            showError("hoursPerWeek", `For the ${userLevel} level, please enter up to ${maxHoursPerLevel[userLevel]} hours.`);
+            hasError = true;
+        }
+    }
 
+    // Only proceed with form submission if there are no errors
+    if (!hasError) {
+        const costPerHour = userLevel === "Basic" ? 10 : userLevel === "Intermediate" ? 15 : 20;
+        const totalCost = userHours * costPerHour;
+        alert(`Total cost for ${userHours} hours at ${userLevel} level: £${totalCost}`);
+        console.log({ userEmail, userLevel, userHours, totalCost });
+    }
 });
 
-  // Check if the user has selected a level
-  // Check if the number of hours requested is within the allowed range
+// Function to display an error message under the relevant input
+function showError(fieldId, message) {
+    const errorContainer = document.querySelector(`#${fieldId} + .error-message`);
+    errorContainer.innerHTML = `<ul><li>${message}</li></ul>`;
+    errorContainer.style.display = "block";
+}
 
-
-
-
-
-
-// Validate the user's input
-// Check if the user has selected a level
-// Check if the user has provided an email address
-// Check if the user has specified at least one hour of study
-// Check if the number of hours requested is within the allowed range
-// Calculate the total cost
-// Display the total cost to the user
-// Store the user's email address as userEmail (string/text)
-// Store the user's level as userLevel (string/text)
-// Store the user's hours of study as userHours (number)
-// Validate the user's input
-// Check if the user has selected a level
-// Check if the user has provided an email address
-// Check if the user has specified at least one hour of study
-// Check if the number of hours requested is within the allowed range
-// Calculate the total cost
-// Display the total cost to the user
-
-// Get the user's email address - userEmail (string)
-// Get the user's level - userLevel (string)
-// Get the user's hours of study - userHours (number)
-// Validate the user's input
-// Check if the user has selected a level
-// Check if the user has provided an email address - has it entrd, @check
-// Check if the user has specified at least one hour of study 0 cnnt b negative
-// Check if the number of hours requested is within the allowed range - must be = to or > than 1, less than or = to max numb for the level
-// Calculate the total cost
-// Calculate the total cost
-// Display the total cost to the user
+// Function to clear all error messages
+function clearErrorMessages() {
+    const errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach(errorMessage => {
+        errorMessage.style.display = "none";
+        errorMessage.innerHTML = ""; // Clear previous error message
+    });
+} 
