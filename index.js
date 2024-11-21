@@ -1,72 +1,53 @@
-let form = document.querySelector("form");
+import { validateEmail, validateLevel, validateHours } from "./validateForm.js";
+import { showError, clearErrorMessages } from "./errorHandling.js";
+import { calculateCost } from "./calculateCost.js";
+
+const form = document.querySelector("form");
 
 form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
 
     // Capture user inputs
-    let userEmail = document.querySelector("#email").value;
-    let userLevel = document.querySelector("#level").value;
-    let userHours = document.querySelector("#hoursPerWeek").value;
+    const userEmail = document.querySelector("#email").value.trim();
+    const userLevel = document.querySelector("#level").value.trim();
+    const userHours = document.querySelector("#hoursPerWeek").value.trim();
 
     // Clear previous error messages
     clearErrorMessages();
     let hasError = false;
 
-    // Presence check and validation for email
-    if (userEmail.trim() === "") {
-        showError("email", "Please enter your email address.");
-        hasError = true;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
-        showError("email", "Please enter a valid email address.");
+    // Validate email
+    const emailError = validateEmail(userEmail);
+    if (emailError) {
+        showError("email", emailError);
         hasError = true;
     }
 
-    // Presence check for level
-    if (userLevel.trim() === "") {
-        showError("level", "Please select your level.");
+    // Validate level
+    const levelError = validateLevel(userLevel);
+    if (levelError) {
+        showError("level", levelError);
         hasError = true;
     }
 
-    // Presence check and validation for hours
-    userHours = parseInt(userHours);
-    if (isNaN(userHours) || userHours <= 0) {
-        showError("hoursPerWeek", "Please enter a valid number of hours greater than zero.");
+    // Validate hours
+    const hoursError = validateHours(userHours, userLevel);
+    if (hoursError) {
+        showError("hoursPerWeek", hoursError);
         hasError = true;
-    } else {
-
-        // Maximum hours based on level
-        const maxHoursPerLevel = {
-            "Basic": 5,
-            "Advanced": 10
-        };
-
-        if (userHours > maxHoursPerLevel[userLevel]) {
-            showError("hoursPerWeek", `For the ${userLevel} level, please enter up to ${maxHoursPerLevel[userLevel]} hours.`);
-            hasError = true;
-        }
     }
 
-    // Only proceed with form submission if there are no errors
+    // If no errors, calculate and display the total cost
     if (!hasError) {
-        const costPerHour = userLevel === "Basic" ? 10 : userLevel === "Intermediate" ? 15 : 20;
-        const totalCost = userHours * costPerHour;
-        alert(`Total cost for ${userHours} hours at ${userLevel} level: £${totalCost}`);
-        console.log({ userEmail, userLevel, userHours, totalCost });
-    }
-});
-
-// Function to display an error message under the relevant input
-function showError(fieldId, message) {
-    const errorContainer = document.querySelector(`#${fieldId} + .error-message`);
-    errorContainer.innerHTML = `<ul><li>${message}</li></ul>`;
-    errorContainer.style.display = "block";
-}
-
-// Function to clear all error messages
-function clearErrorMessages() {
-    const errorMessages = document.querySelectorAll(".error-message");
-    errorMessages.forEach(errorMessage => {
-        errorMessage.style.display = "none";
-        errorMessage.innerHTML = ""; // Clear previous error message
-    });
-} 
+        try {
+            const totalCost = calculateCost(parseInt(userHours), userLevel);
+            // Update the cost output section
+            const costOutput = document.getElementById("costOutput");
+            const costMessage = document.getElementById("costMessage");
+            costMessage.innerHTML = `Total cost for ${userHours} hours at ${userLevel} level: <strong>£${totalCost}</strong>`;
+            costOutput.style.display = "block"; // Make the cost output visible
+        } catch (error) {
+            console.error(error.message);
+        }
+    } 
+}); 

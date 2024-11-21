@@ -1,36 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Harmony | Sign Up</title>
 <link rel="stylesheet" href="./index.css" />
 </head>
 <body>
 <form class="form-wrapper">
 <div class="form-section">
-<!-- Email Field with Error Message Placeholder -->
+
+  <!-- Email Field -->
 <div class="form-field">
 <label for="email" class="form-label">Email*</label>
 <input
-
             id="email"
-
             name="email"
-
             type="text"
-
             class="form-input"
-
             placeholder="Your email"
-
           />
-<!-- Error message placeholder for email -->
-<div class="error-message" style="display: none;">
-<ul>
-<li>Please enter a valid email address.</li>
-</ul>
+<div class="error-message" style="display: none;"></div>
 </div>
-</div>
-<!-- Level Field with Error Message Placeholder -->
+
+<!-- Level Field -->
 <div class="form-field">
 <label for="level" class="form-label">Level*</label>
 <select id="level" name="level" class="form-input">
@@ -38,40 +31,32 @@
 <option value="Basic">Basic</option>
 <option value="Advanced">Advanced</option>
 </select>
-<!-- Error message placeholder for level -->
-<div class="error-message" style="display: none;">
-<ul>
-<li>Please select a level.</li>
-</ul>
+<div class="error-message" style="display: none;"></div>
 </div>
-</div>
-<!-- Hours per Week Field with Error Message Placeholder -->
+
+<!-- Hours per Week Field -->
 <div class="form-field">
 <label for="hoursPerWeek" class="form-label">Hours per week*</label>
 <input
-
             id="hoursPerWeek"
-
             name="hours-per-week"
-
             type="number"
-
             class="form-input"
-
             placeholder="How many?"
-
           />
-<!-- Error message placeholder for hours per week -->
-<div class="error-message" style="display: none;">
-<ul>
-<li>Please enter a valid number of hours.</li>
-</ul>
+<div class="error-message" style="display: none;"></div>
 </div>
-</div>
+
 <!-- Submit Button -->
 <button type="submit" class="submit-btn">Sign up</button>
 </div>
-<!-- Mobile Hidden Section (Logo) -->
+
+<!-- Cost Output -->
+<div class="cost-output" id="costOutput" style="display: none;">
+          <p id="costMessage"></p>
+</div> 
+
+<!-- Logo Section for Larger Screens -->
 <div class="form-section form-scale mobile-hidden">
 <img
           src="./assets/harmony-music-academy-logo.svg"
@@ -80,7 +65,7 @@
 </div>
 </form>
 
-<!-- JavaScript File -->
+<!-- JavaScript -->
 <script type="module" src="./index.js"></script>
 </body>
 </html> 
