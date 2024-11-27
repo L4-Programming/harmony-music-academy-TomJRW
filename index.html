@@ -15,67 +15,73 @@
       />
     </div>
 
-    <!-- Form Wrapper -->
-    <form class="form-wrapper">
-      <div class="form-section">
-        <!-- Email Field -->
-        <div class="form-field">
-          <label for="email" class="form-label">Email*</label>
-          <input
-            id="email"
-            name="email"
-            type="text"
-            class="form-input"
-            placeholder="Your email"
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Form Wrapper -->
+      <form class="form-wrapper" id="formWrapper">
+        <div class="form-section">
+          <!-- Email Field -->
+          <div class="form-field">
+            <label for="email" class="form-label">Email*</label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              class="form-input"
+              placeholder="Your email"
+            />
+            <div class="error-message" style="display: none"></div>
+          </div>
+
+          <!-- Level Field -->
+          <div class="form-field">
+            <label for="level" class="form-label">Level*</label>
+            <select id="level" name="level" class="form-input">
+              <option value="">Select level</option>
+              <option value="Basic">Basic</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+            <div class="error-message" style="display: none"></div>
+          </div>
+
+          <!-- Hours per Week Field -->
+          <div class="form-field">
+            <label for="hoursPerWeek" class="form-label">Hours per week*</label>
+            <input
+              id="hoursPerWeek"
+              name="hours-per-week"
+              type="number"
+              class="form-input"
+              placeholder="How many?"
+            />
+            <div class="error-message" style="display: none"></div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Sign up</button>
+        </div>
+
+        <!-- Cost Output -->
+        <div class="cost-output" id="costOutput" style="display: none">
+          <p id="costMessage"></p>
+        </div>
+
+        <!-- Logo Section for Larger Screens -->
+        <div class="form-section form-scale desktop-logo">
+          <img
+            src="./assets/harmony-music-academy-logo.svg"
+            alt="Harmony Music Academy logo"
           />
-          <div class="error-message" style="display: none"></div>
         </div>
+      </form>
 
-        <!-- Level Field -->
-        <div class="form-field">
-          <label for="level" class="form-label">Level*</label>
-          <select id="level" name="level" class="form-input">
-            <option value="">Select level</option>
-            <option value="Basic">Basic</option>
-            <option value="Advanced">Advanced</option>
-          </select>
-          <div class="error-message" style="display: none"></div>
-        </div>
-
-        <!-- Hours per Week Field -->
-        <div class="form-field">
-          <label for="hoursPerWeek" class="form-label">Hours per week*</label>
-          <input
-            id="hoursPerWeek"
-            name="hours-per-week"
-            type="number"
-            class="form-input"
-            placeholder="How many?"
-          />
-          <div class="error-message" style="display: none"></div>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn">Sign up</button>
+      <!-- Results Section (Initially Hidden) -->
+      <div id="results" style="display: none" class="results-wrapper">
+        <!-- Dynamically Inject Results Here -->
       </div>
-
-      <!-- Cost Output -->
-      <div class="cost-output" id="costOutput" style="display: none">
-        <p id="costMessage"></p>
-      </div>
-
-      <!-- Logo Section for Larger Screens -->
-      <div class="form-section form-scale desktop-logo">
-        <img
-          src="./assets/harmony-music-academy-logo.svg"
-          alt="Harmony Music Academy logo"
-        />
-      </div>
-    </form>
+    </div>
 
     <!-- JavaScript -->
     <script type="module" src="./index.js"></script>
   </body>
 </html>
-
-<div id="results" style="display: none"></div>

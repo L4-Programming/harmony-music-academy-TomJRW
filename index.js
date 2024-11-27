@@ -1,49 +1,53 @@
+// Importing validation and helper functions from other modules
 import { validateEmail, validateLevel, validateHours } from "./validateForm.js";
 import { showError, clearErrorMessages } from "./errorHandling.js";
 import { calculateCost } from "./calculateCost.js";
 
+// Select the form and the form section for dynamic updates
 const form = document.querySelector("form");
 const formSection = document.querySelector(".form-section"); // Target the form section for replacement
 
+// Add an event listener for form submission
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent default form submission
+  event.preventDefault(); // Prevent default form submission behavior
 
-  // Capture user inputs
+  // Capture user inputs and trim any extra whitespace
   const userEmail = document.querySelector("#email").value.trim();
   const userLevel = document.querySelector("#level").value.trim();
   const userHours = document.querySelector("#hoursPerWeek").value.trim();
 
-  // Clear previous error messages
+  // Clear previous error messages to prevent duplication
   clearErrorMessages();
   let hasError = false;
 
-  // Validate email
+  // Validate the email input
   const emailError = validateEmail(userEmail);
   if (emailError) {
-    showError("email", emailError);
+    showError("email", emailError); // Display error message for email field
     hasError = true;
   }
 
-  // Validate level
+  // Validate the level selection
   const levelError = validateLevel(userLevel);
   if (levelError) {
-    showError("level", levelError);
+    showError("level", levelError); // Display error message for level field
     hasError = true;
   }
 
-  // Validate hours
+  // Validate the hours input
   const hoursError = validateHours(userHours, userLevel);
   if (hoursError) {
-    showError("hoursPerWeek", hoursError);
+    showError("hoursPerWeek", hoursError); // Display error message for hours field
     hasError = true;
   }
 
-  // If no errors, calculate and display the results
+  // If no errors were found, proceed with cost calculation and displaying results
   if (!hasError) {
     try {
+      // Calculate the total cost based on the inputs
       const totalCost = calculateCost(parseInt(userHours), userLevel);
 
-      // Replace form section with results
+      // Replace the form section with the results card
       formSection.innerHTML = `
         <div class="results-card">
           <div class="results-email">${userEmail}</div>
@@ -64,11 +68,12 @@ form.addEventListener("submit", function (event) {
         <button class="submit-btn" id="resetBtn">Start Over</button>
       `;
 
-      // Add a reset button functionality
+      // Add functionality to reset the form
       document.getElementById("resetBtn").addEventListener("click", () => {
         location.reload(); // Reload the page to reset the form
       });
     } catch (error) {
+      // Log any errors encountered during cost calculation
       console.error("Error calculating cost:", error.message);
     }
   }

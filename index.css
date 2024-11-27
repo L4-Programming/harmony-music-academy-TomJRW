@@ -8,145 +8,159 @@
   --brand-dark: rgb(45, 100, 200); /* Cool darker blue */
   --sky-500: rgb(70, 130, 180); /* Steel blue */
   --box-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3),
-    0 4px 6px -4px rgb(0 0 0 / 0.3);
+    0 4px 6px -4px rgb(0 0 0 / 0.3); /* Subtle shadow */
 }
 
+/* General reset for all elements */
 * {
-  color: var(--black);
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+  color: var(--black); /* Default text color */
+  box-sizing: border-box; /* Include padding and border in width/height */
+  font-family: Arial, Helvetica, sans-serif; /* Use sans-serif font */
+  margin: 0; /* Remove default margin */
 }
 
 button {
-  cursor: pointer;
+  cursor: pointer; /* Pointer cursor for buttons */
 }
 
+/* Main wrapper for form and logo sections */
 .form-wrapper {
-  display: flex;
-  background-color: var(--white); /* Dark background */
-  min-height: 100vh;
+  display: flex; /* Flexbox for horizontal layout */
+  background-color: var(--white); /* Dark background color */
+  min-height: 100vh; /* Full viewport height */
 }
 
+/* Styling for individual form sections */
 .form-section {
-  width: calc(50% - 1px);
+  width: calc(50% - 1px); /* Split width equally for form and logo */
   display: flex;
   flex-grow: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 2rem 4rem;
+  flex-direction: column; /* Vertical alignment for content */
+  justify-content: center; /* Center content vertically */
+  align-items: flex-start; /* Align items to the start */
+  gap: 2rem; /* Space between elements */
+  padding: 2rem 4rem; /* Padding inside sections */
 }
 
+/* Border between the two sections */
 .form-section:first-of-type {
-  border-right: 1px solid var(--grey-300);
+  border-right: 1px solid var(--grey-300); /* Light border */
 }
 
+/* Form field container */
 .form-field {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-start;
-  width: 100%;
+  flex-direction: column; /* Stack label and input vertically */
+  gap: 0.5rem; /* Space between label and input */
+  align-items: flex-start; /* Align to the start */
+  width: 100%; /* Full width */
 }
 
+/* Styling for form labels */
 .form-label {
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* Slightly larger font for labels */
 }
 
+/* Styling for form inputs */
 .form-input {
   background-color: var(--grey-50); /* Dark input background */
-  border-radius: 999px;
-  border: 1px solid var(--grey-300);
-  font-size: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  font-weight: 300;
-  color: var(--black); /* Light text for dark background */
-  width: 100%;
+  border-radius: 999px; /* Fully rounded corners */
+  border: 1px solid var(--grey-300); /* Light border */
+  font-size: 1.5rem; /* Font size for input text */
+  padding: 0.75rem 1.5rem; /* Padding inside input */
+  font-weight: 300; /* Light font weight */
+  color: var(--black); /* Text color */
+  width: 100%; /* Full width */
 }
 
+/* Placeholder text styling */
 .form-input::placeholder {
-  color: var(--grey-500); /* Lighter gray for placeholders */
+  color: var(--grey-500); /* Lighter gray for placeholder text */
 }
 
+/* Input focus styles */
 .form-input:focus {
-  outline: none;
-  outline: 2px solid var(--sky-500); /* Steel blue outline */
-  box-shadow: var(--box-shadow-lg);
+  outline: none; /* Remove default outline */
+  outline: 2px solid var(--sky-500); /* Add blue outline on focus */
+  box-shadow: var(--box-shadow-lg); /* Add subtle shadow */
 }
 
+/* Submit button styling */
 .submit-btn {
-  border-radius: 1.75rem;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--white); /* Dark background for button */
-  border: 0;
-  padding: 0.75rem 2rem;
-  font-size: 1.5rem;
+  border-radius: 1.75rem; /* Rounded corners */
+  margin: 0 auto; /* Center the button */
+  text-align: center; /* Center text */
+  color: var(--white); /* White text color */
+  border: 0; /* Remove border */
+  padding: 0.75rem 2rem; /* Padding for the button */
+  font-size: 1.5rem; /* Font size for button text */
   background: linear-gradient(
     180deg,
     var(--brand-light) 0%,
     var(--brand-dark) 100%
-  );
-  transition: all 0.3s ease;
+  ); /* Gradient background */
+  transition: all 0.3s ease; /* Smooth transitions */
   outline: none;
   box-shadow: none;
 }
 
+/* Hover effect for the submit button */
 .submit-btn:hover {
-  outline: 1px solid var(--brand-dark);
-  box-shadow: var(--box-shadow-lg);
-  transition: all 0.3s ease;
+  outline: 1px solid var(--brand-dark); /* Add dark blue outline */
+  box-shadow: var(--box-shadow-lg); /* Add shadow */
+  transition: all 0.3s ease; /* Smooth transition */
 }
 
-/* Error styling for error labels */
+/* Error styling */
 .error-label {
-  color: var(--brand-light);
+  color: var(--brand-light); /* Light blue color for errors */
 }
 .error-message ul {
-  padding-left: 0;
+  padding-left: 0; /* Remove default padding */
 }
 
+/* Individual error message styling */
 .error-message ul li {
-  color: var(--brand-light);
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 0.1px;
-  list-style: none;
-  margin-bottom: 0.5rem;
+  color: var(--brand-light); /* Light blue error text */
+  font-weight: 800; /* Bold font */
+  font-size: 0.8rem; /* Smaller font size */
+  letter-spacing: 0.1px; /* Slight letter spacing */
+  list-style: none; /* Remove list style */
+  margin-bottom: 0.5rem; /* Space below each error */
 }
 
-/* Logo Section */
+/* Logo section for smaller screens */
 .logo-section {
-  display: none; /* Hidden by default for larger screens */
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem; /* Default spacing for mobile */
+  display: none; /* Hidden for larger screens */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-bottom: 2rem; /* Add space below */
 }
 
+/* Logo image styling */
 .logo-section img {
-  max-width: 150px; /* Ensure the logo scales for smaller screens */
-  height: auto;
-  margin: 0 auto; /* Center logo horizontally */
+  max-width: 150px; /* Scale for smaller screens */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center horizontally */
 }
 
-/* For Larger Screens: Logo on the Right */
+/* Adjust logo for larger screens */
 .form-scale img {
-  max-width: 300px; /* Adjust logo size for desktops */
-  height: auto;
-  align-self: center;
+  max-width: 300px; /* Larger logo for desktops */
+  height: auto; /* Maintain aspect ratio */
+  align-self: center; /* Center the logo */
 }
 
+/* Desktop-specific styles */
 @media screen and (min-width: 768px) {
   .logo-section {
-    display: none; /* Hide top logo for desktop */
+    display: none; /* Hide mobile logo on desktop */
   }
 
   .form-scale {
-    display: flex; /* Ensure the logo is displayed on the right */
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Ensure side logo is displayed */
+    justify-content: center; /* Center the logo */
+    align-items: center; /* Align vertically */
   }
 
   .form-wrapper {
@@ -154,7 +168,7 @@ button {
   }
 }
 
-/* For Smaller Screens: Move Logo to the Top */
+/* Mobile-specific styles */
 @media screen and (max-width: 768px) {
   .logo-section {
     display: flex; /* Show the top logo */
@@ -174,53 +188,57 @@ button {
   }
 }
 
-/* Results Card */
+/* Styling for the results card */
 .results-card {
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  text-align: center;
+  background-color: #fff; /* White background */
+  border-radius: 1rem; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 300px; /* Limit card width */
+  margin: 2rem auto; /* Center the card */
+  padding: 1.5rem; /* Inner padding */
+  text-align: center; /* Center align text */
 }
 
+/* Results email styling */
 .results-email {
-  background-color: #ff5a3a;
-  color: #fff;
-  padding: 0.5rem 0;
-  border-radius: 0.5rem 0.5rem 0 0;
-  font-size: 1rem;
-  font-weight: bold;
+  background-color: #ff5a3a; /* Bright orange */
+  color: #fff; /* White text */
+  padding: 0.5rem 0; /* Padding */
+  border-radius: 0.5rem 0.5rem 0 0; /* Round top corners */
+  font-size: 1rem; /* Font size */
+  font-weight: bold; /* Bold font */
 }
 
+/* Cost display styling */
 .results-cost {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #000;
-  margin: 1rem 0;
+  font-size: 2.5rem; /* Large font size */
+  font-weight: 800; /* Extra bold */
+  color: #000; /* Black text */
+  margin: 1rem 0; /* Margin around cost */
 }
 
 .results-cost span {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 0.8rem; /* Smaller font for details */
+  color: #888; /* Gray text */
 }
 
+/* Additional details styling */
 .results-details {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
-  text-transform: uppercase;
-  color: #555;
-  font-size: 0.9rem;
+  display: flex; /* Flex layout */
+  justify-content: space-around; /* Space between items */
+  margin-top: 1rem; /* Space above details */
+  text-transform: uppercase; /* Uppercase text */
+  color: #555; /* Dark gray text */
+  font-size: 0.9rem; /* Font size */
 }
 
 .results-detail {
-  font-weight: bold;
+  font-weight: bold; /* Bold font */
 }
 
+/* Ensure results card scales on mobile */
 @media (max-width: 768px) {
   .results-card {
-    width: 90%;
+    width: 90%; /* Full width for smaller screens */
   }
 }
