@@ -8,7 +8,7 @@
   --brand-dark: rgb(45, 100, 200); /* Cool darker blue */
   --sky-500: rgb(70, 130, 180); /* Steel blue */
   --box-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3),
-                   0 4px 6px -4px rgb(0 0 0 / 0.3);
+    0 4px 6px -4px rgb(0 0 0 / 0.3);
 }
 
 * {
@@ -117,73 +117,110 @@ button {
   margin-bottom: 0.5rem;
 }
 
-/* Default: hide the top image for larger screens */
-.mobile-display {
-  display: none;
+/* Logo Section */
+.logo-section {
+  display: none; /* Hidden by default for larger screens */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; /* Default spacing for mobile */
 }
 
-/* Show the top image and hide the side image on smaller screens */
-@media screen and (max-width: 640px) {
-  .mobile-hidden {
-    display: none;
+.logo-section img {
+  max-width: 150px; /* Ensure the logo scales for smaller screens */
+  height: auto;
+  margin: 0 auto; /* Center logo horizontally */
+}
+
+/* For Larger Screens: Logo on the Right */
+.form-scale img {
+  max-width: 300px; /* Adjust logo size for desktops */
+  height: auto;
+  align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  .logo-section {
+    display: none; /* Hide top logo for desktop */
   }
 
-  .mobile-display {
-    display: block;
-    text-align: center;
-    margin-bottom: 1rem;
+  .form-scale {
+    display: flex; /* Ensure the logo is displayed on the right */
+    justify-content: center;
+    align-items: center;
   }
 
   .form-wrapper {
-    flex-direction: column; /* Stack form sections vertically on mobile */
+    flex-direction: row; /* Horizontal layout */
+  }
+}
+
+/* For Smaller Screens: Move Logo to the Top */
+@media screen and (max-width: 768px) {
+  .logo-section {
+    display: flex; /* Show the top logo */
+  }
+
+  .form-scale {
+    display: none; /* Hide the side logo */
+  }
+
+  .form-wrapper {
+    flex-direction: column; /* Stack sections vertically */
   }
 
   .form-section {
-    width: calc(50% - 1px); /* Full width on mobile */
-    padding: 2rem 4rem; /* Adjust padding for smaller screens */
+    width: 100%; /* Full width for mobile */
+    padding: 1.5rem; /* Adjust padding for smaller screens */
   }
-
-} @media screen and (max-width: 640px) {
-  .mobile-hidden {
-    display: none;
-  }
-
-  .mobile-display {
-    display: block;
-  }
-} 
-
-/* Styling for the cost-output section */
-.cost-output {
-  margin-top: 20px; /* Space above the output */
-  padding: 15px; /* Padding inside the box */
-  border: 2px solid #007bff; /* Blue border */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f0f8ff; /* Light blue background */
-  color: #004085; /* Dark blue text */
-  font-size: 1.2rem; /* Slightly larger text size */
-  text-align: center; /* Center align text */
-  font-family: Arial, sans-serif; /* Clean font */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
 }
 
-/* Strong emphasis on the cost */
-.cost-output strong {
+/* Results Card */
+.results-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.results-email {
+  background-color: #ff5a3a;
+  color: #fff;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-size: 1rem;
   font-weight: bold;
-  color: #002752; /* Darker blue for emphasis */
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+.results-cost {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #000;
+  margin: 1rem 0;
+}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} 
+.results-cost span {
+  font-size: 0.8rem;
+  color: #888;
+}
 
+.results-details {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.results-detail {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .results-card {
+    width: 90%;
+  }
+}

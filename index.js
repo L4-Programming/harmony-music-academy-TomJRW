@@ -3,9 +3,10 @@ import { showError, clearErrorMessages } from "./errorHandling.js";
 import { calculateCost } from "./calculateCost.js";
 
 const form = document.querySelector("form");
-// Event listener for form submission
+const formSection = document.querySelector(".form-section"); // Target the form section for replacement
+
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the default form submission
+  event.preventDefault(); // Prevent default form submission
 
   // Capture user inputs
   const userEmail = document.querySelector("#email").value.trim();
@@ -37,17 +38,38 @@ form.addEventListener("submit", function (event) {
     hasError = true;
   }
 
-  // If no errors, calculate and display the total cost
+  // If no errors, calculate and display the results
   if (!hasError) {
     try {
       const totalCost = calculateCost(parseInt(userHours), userLevel);
-      // Update the cost output section
-      const costOutput = document.getElementById("costOutput");
-      const costMessage = document.getElementById("costMessage");
-      costMessage.innerHTML = `Total cost for ${userHours} hours at ${userLevel} level: <strong>£${totalCost}</strong>`;
-      costOutput.style.display = "block"; // Make the cost output visible
+
+      // Replace form section with results
+      formSection.innerHTML = `
+        <div class="results-card">
+          <div class="results-email">${userEmail}</div>
+          <div class="results-cost">£${totalCost.toFixed(
+            2
+          )}<span> per week</span></div>
+          <div class="results-details">
+            <div>
+              <dt>Level</dt>
+              <dd class="results-detail">${userLevel}</dd>
+            </div>
+            <div>
+              <dt>Hours</dt>
+              <dd class="results-detail">${userHours}</dd>
+            </div>
+          </div>
+        </div>
+        <button class="submit-btn" id="resetBtn">Start Over</button>
+      `;
+
+      // Add a reset button functionality
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        location.reload(); // Reload the page to reset the form
+      });
     } catch (error) {
-      console.error(error.message);
+      console.error("Error calculating cost:", error.message);
     }
   }
 });
