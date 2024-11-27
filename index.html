@@ -1,46 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harmony | Sign Up</title>
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <form class="form-wrapper">
-      <div class="form-section">
-        <div class="form-field">
-          <label for="email" class="form-label">Email*</label>
-          <input
-            name="email"
-            type="text"
-            class="form-input"
-            placeholder="Your email"
-          />
-        </div>
-        <div class="form-field">
-          <label for="level" class="form-label">Level*</label>
-          <select name="level" class="form-input">
-            <option value="basic">Basic</option>
-            <option value="advanced">Advanced</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="hoursPerWeek" class="form-label">Hours per week*</label>
-          <input
-            name="hours-per-week"
-            type="number"
-            class="form-input"
-            placeholder="How many?"
-          />
+    <!-- Logo Section for Smaller Screens -->
+    <div class="logo-section mobile-display">
+      <img
+        src="./assets/harmony-music-academy-logo.svg"
+        alt="Harmony Music Academy logo"
+      />
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Form Wrapper -->
+      <form class="form-wrapper" id="formWrapper">
+        <div class="form-section">
+          <!-- Email Field -->
+          <div class="form-field">
+            <label for="email" class="form-label">Email*</label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              class="form-input"
+              placeholder="Your email"
+            />
+            <div class="error-message" style="display: none"></div>
+          </div>
+
+          <!-- Level Field -->
+          <div class="form-field">
+            <label for="level" class="form-label">Level*</label>
+            <select id="level" name="level" class="form-input">
+              <option value="">Select level</option>
+              <option value="Basic">Basic</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+            <div class="error-message" style="display: none"></div>
+          </div>
+
+          <!-- Hours per Week Field -->
+          <div class="form-field">
+            <label for="hoursPerWeek" class="form-label">Hours per week*</label>
+            <input
+              id="hoursPerWeek"
+              name="hours-per-week"
+              type="number"
+              class="form-input"
+              placeholder="How many?"
+            />
+            <div class="error-message" style="display: none"></div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Sign up</button>
         </div>
 
-        <button type="submit" class="submit-btn">Sign up</button>
-      </div>
+        <!-- Cost Output -->
+        <div class="cost-output" id="costOutput" style="display: none">
+          <p id="costMessage"></p>
+        </div>
 
-      <div class="form-section">
-        <img
-          src="./assets/harmony-music-academy-logo.svg"
-          alt="Harmony Music Academy logo"
-        />
+        <!-- Logo Section for Larger Screens -->
+        <div class="form-section form-scale desktop-logo">
+          <img
+            src="./assets/harmony-music-academy-logo.gif"
+            alt="Harmony Music Academy logo"
+          />
+        </div>
+      </form>
+
+      <!-- Results Section (Initially Hidden) -->
+      <div id="results" style="display: none" class="results-wrapper">
+        <!-- Dynamically Inject Results Here -->
       </div>
-    </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
