@@ -25,8 +25,8 @@ button {
 
 /* Main wrapper for form and logo sections */
 .form-wrapper {
-  display: flex; /* Flexbox for horizontal layout */
-  background-color: var(--white); /* Dark background color */
+  display: flex;
+  background-color: var(--white); /* Ensure it's the dark background */
   min-height: 100vh; /* Full viewport height */
 }
 
@@ -183,14 +183,17 @@ button {
   }
 
   .form-section {
-    width: 100%; /* Full width for mobile */
-    padding: 1.5rem; /* Adjust padding for smaller screens */
+    width: 100%; /* Make the form section take the full width of the container */
+    padding: 1.5rem; /* Add padding for spacing within the section */
+    background-color: var(
+      --white
+    ); /* Set the background color to match the dark theme */
   }
 }
 
 /* Styling for the results card */
 .results-card {
-  background-color: #fff; /* White background */
+  background-color: var(--grey-50); /* Match dark theme */
   border-radius: 1rem; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   max-width: 300px; /* Limit card width */
@@ -201,7 +204,7 @@ button {
 
 /* Results email styling */
 .results-email {
-  background-color: #ff5a3a; /* Bright orange */
+  background-color: var(--brand-dark); /* Match theme accent */
   color: #fff; /* White text */
   padding: 0.5rem 0; /* Padding */
   border-radius: 0.5rem 0.5rem 0 0; /* Round top corners */
@@ -213,7 +216,7 @@ button {
 .results-cost {
   font-size: 2.5rem; /* Large font size */
   font-weight: 800; /* Extra bold */
-  color: #000; /* Black text */
+  color: var(--grey-500); /* Match text tone */
   margin: 1rem 0; /* Margin around cost */
 }
 
@@ -237,8 +240,18 @@ button {
 }
 
 /* Ensure results card scales on mobile */
-@media (max-width: 768px) {
-  .results-card {
-    width: 90%; /* Full width for smaller screens */
+@media screen and (max-width: 768px) {
+  /* Display the logo section in mobile view */
+  .logo-section {
+    display: flex; /* Make the logo section visible in flex layout */
+    background-color: var(
+      --white
+    ); /* Set the background to match the dark theme */
+  }
+
+  /* Ensure the body has a consistent background color */
+  body {
+    background-color: var(--white); /* Apply the dark theme background color */
+    margin: 0; /* Remove any default margin to avoid white gaps */
   }
 }
